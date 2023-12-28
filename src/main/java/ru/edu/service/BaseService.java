@@ -1,15 +1,19 @@
 package ru.edu.service;
 
 import org.springframework.stereotype.Service;
+import ru.edu.exception.MyException;
+
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Service
 public class BaseService {
 
     public Map<Character, Integer> start(String input) {
-        if (isAlpha(input)) return checkString(input);
-        else return null;
+        if (input.matches("[a-zA-Z]+")) {
+            return checkString(input);
+        } else throw new MyException("ERROR");
     }
 
     //TODO: add exception
@@ -31,10 +35,15 @@ public class BaseService {
             } else charCountMap.put(c, 1);
         }
 
-        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
-            char c = entry.getKey();
-            int count = entry.getValue();
-        }
         return charCountMap;
+
+        /*return charCountMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .collect(
+                        LinkedHashMap::new,
+                        (map1, entry) -> map1.put(entry.getKey(), entry.getValue()),
+                        LinkedHashMap::putAll
+                );*/
     }
 }
