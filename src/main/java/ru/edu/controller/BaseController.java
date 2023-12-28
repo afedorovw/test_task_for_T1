@@ -1,5 +1,6 @@
 package ru.edu.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.edu.config.Log;
@@ -22,9 +23,9 @@ public class BaseController {
         return ResponseEntity.ok().body("test");
     }
 
-    @GetMapping("/list/{input}")
-    public Map<Character, Integer> getInputTest (@PathVariable("input") String str){
+    @GetMapping(value = "/list/{input}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<Character, Integer>> getInputTest (@PathVariable("input") String str){
         Log.controllerLog.info("Start getInputTest, input: {}", str);
-        return service.start(str);
+        return ResponseEntity.ok().body(service.checkString(str));
     }
 }
