@@ -52,18 +52,22 @@ public class StringCheckControllerTest {
     @Test
     @Order(2)
     public void testGetInput() throws Exception {
-        Map<Character, Integer> expectedResult = new HashMap<>();
-        expectedResult.put('a', 1);
-        expectedResult.put('b', 2);
-
-        when(service.checkString(anyString())).thenReturn(expectedResult);
-
         mockMvc.perform(get("/list/abb")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.a", is(1)))
-                .andExpect(jsonPath("$.b", is(2)));
+                .andExpect(content().json("{\"a\":1,\"b\":2}"));
+//                .andExpect(jsonPath("$.a", is(1)))
+//                .andExpect(jsonPath("$.b", is(2)));
     }
+
+    /*@Test
+    public void checkTotal() {
+        given()
+                .when()
+                .get("https://localhost:8081/list/a")
+                .then()
+                .body("a", is(1));
+    }*/
 
     //TODO: add negative test
 }
