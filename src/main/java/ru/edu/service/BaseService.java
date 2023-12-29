@@ -10,13 +10,11 @@ import java.util.Map;
 @Service
 public class BaseService {
 
-    public Map<Character, Integer> start(String input) {
+    public Map<Character, Integer> start(String input) throws MyException {
         if (input.matches("[a-zA-Z]+")) {
             return checkString(input);
-        } else throw new MyException("ERROR");
+        } else throw new MyException("The input data does not match the parameters");
     }
-
-    //TODO: add exception
 
     public boolean isAlpha(String name) {
         return name.matches("[a-zA-Z]+");
