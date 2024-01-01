@@ -11,13 +11,8 @@ import java.util.Map;
 public class BaseService {
 
     public Map<Character, Integer> start(String input) throws MyException {
-        if (input.matches("[a-zA-Z]+")) {
-            return checkString(input);
-        } else throw new MyException("The input data does not match the parameters");
-    }
-
-    public boolean isAlpha(String name) {
-        return name.matches("[a-zA-Z]+");
+        if (input.matches("[a-zA-Z]+")) return checkString(input);
+         else throw new MyException("The input data does not match the parameters");
     }
 
     public Map<Character, Integer> checkString(String input) {
@@ -33,15 +28,13 @@ public class BaseService {
             } else charCountMap.put(c, 1);
         }
 
-        return charCountMap;
-
-        /*return charCountMap.entrySet()
+        return charCountMap.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
                 .collect(
                         LinkedHashMap::new,
                         (map1, entry) -> map1.put(entry.getKey(), entry.getValue()),
                         LinkedHashMap::putAll
-                );*/
+                );
     }
 }

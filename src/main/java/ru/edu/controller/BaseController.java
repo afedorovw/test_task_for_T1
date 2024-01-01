@@ -18,13 +18,13 @@ public class BaseController {
         this.service = service;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/")
     public ResponseEntity<String> getTest (){
         Log.controllerLog.info("Start getTest");
         return ResponseEntity.ok().body("test");
     }
 
-    @GetMapping(value = "/list/{input}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{input}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<Character, Integer>> getInputTest (@PathVariable("input") String str)
             throws MyException {
         Log.controllerLog.info("Start getInputTest, input: {}", str);
