@@ -15,7 +15,7 @@ public class BaseService {
         else throw new MyException("The input data does not match the parameters");
     }
 
-    public Map<Character, Integer> checkString(String input) {
+    Map<Character, Integer> checkString(String input) {
 
         char[] char_array = input.toCharArray();
 
