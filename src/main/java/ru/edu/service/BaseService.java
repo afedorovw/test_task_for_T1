@@ -12,20 +12,17 @@ public class BaseService {
 
     public Map<Character, Integer> start(String input) throws MyException {
         if (input.matches("[a-zA-Z]+")) return checkString(input);
-         else throw new MyException("The input data does not match the parameters");
+        else throw new MyException("The input data does not match the parameters");
     }
 
     public Map<Character, Integer> checkString(String input) {
 
+        char[] char_array = input.toCharArray();
+
         Map<Character, Integer> charCountMap = new HashMap<>();
 
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-
-            if (charCountMap.containsKey(c)) {
-                int count = charCountMap.get(c);
-                charCountMap.put(c, count + 1);
-            } else charCountMap.put(c, 1);
+        for (char i : char_array) {
+            charCountMap.put(i, charCountMap.get(i) == null ? 1 : charCountMap.get(i) + 1);
         }
 
         return charCountMap.entrySet()
