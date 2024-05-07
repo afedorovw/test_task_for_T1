@@ -6,22 +6,22 @@
 
 _Использование сервиса по следующему адресу_ `http://0.0.0.0:8081/{controller}`
 
-| Controller | Input      | Result                 |
-|------------|------------|------------------------|
-| /          | -          | test                   | 
-| /{input}   | aaaaabcccc | “a”: 5, “c”: 4, “b”: 1 |
+| Controller   | Input      | Result                 |
+|--------------|------------|------------------------|
+| /            | -          | test                   | 
+| /str/{input} | aaaaabcccc | “a”: 5, “c”: 4, “b”: 1 |
 
 
 ### Локальная сборка и запуск
 
 ```
 mvn clean install
-mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"
+mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=<port>"
 ```
 
 ### Сборка и запуск docker образа
 
 ```
 docker build -t <image_name> .
-docker run -d -p 8081:8081 <image_name>
+docker run -d -p <port>:8081 <image_name>
 ```
