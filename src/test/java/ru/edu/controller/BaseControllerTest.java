@@ -31,7 +31,7 @@ class BaseControllerTest implements TestData {
     @Test
     void getInputTest() throws Exception {
         var response = mockMvc.perform(
-                get("/aabbbc")
+                get("/str/aabbbc")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonRequest)
         ).andReturn();
