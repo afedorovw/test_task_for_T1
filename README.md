@@ -16,7 +16,7 @@ _Использование сервиса по следующему адрес�
 
 ```
 mvn clean install
-mvn spring-boot:run
+mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"
 ```
 
 ### Сборка и запуск docker образа
